@@ -10,6 +10,7 @@ import { DifferentSizesExperiment } from './components/experiments/differentSize
 import { DifferentColorsExperiment } from './components/experiments/differentColorsExperiment';
 import { Route, Router, Switch } from 'react-router';
 import { Header } from 'semantic-ui-react';
+import { DifferentPositionsExperiment } from './components/experiments/differentPositionsExperiment';
 
 const routing = (
   <Router history={createBrowserHistory()}>
@@ -20,6 +21,7 @@ const routing = (
                   <Route exact path="/basic" component={Experiment} />
                   <Route exact path="/colors" component={DifferentColorsExperiment} />
                   <Route path="/sizes" component={DifferentSizesExperiment} />
+                  <Route path="/positions" component={DifferentPositionsExperiment} />
               </Switch>
           </div>
   </Router>
