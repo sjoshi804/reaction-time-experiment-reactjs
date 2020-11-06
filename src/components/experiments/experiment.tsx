@@ -132,8 +132,10 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
                 transform: 'translate(-50%, -50%)'
                 }}
             >
-            <div className="ui equal width center aligned padded grid">
-                <div className="row">
+            <div className="ui equal width center aligned padded grid" >
+                <div className="row" 
+                    style={{width: "100%", height: 300, margin:"auto"}}
+                >
                     <div className="column">
                         {this.stimulus(this.state.stimulusPresent, this.state.stimulusType)}
                     </div>
