@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container } from 'semantic-ui-react';
+import { Button, Container, Header } from 'semantic-ui-react';
 import { CSVLink } from 'react-csv';
 
 class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string }>
@@ -117,6 +117,15 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
             );
 
         return (
+            <div>
+                        <Header
+          style={{
+              position: 'absolute', left: '50%', top: '5%',
+              transform: 'translate(-50%, -50%)'
+          }}
+        >
+          {this.getExperimentTitle()}
+        </Header>
             <Container
                 style={{
                 position: 'absolute', left: '50%', top: '40%',
@@ -136,6 +145,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
                 </div> 
             </div>
             </Container>
+            </div>
         );
     }
 }

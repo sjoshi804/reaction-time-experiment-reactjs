@@ -14,10 +14,15 @@ function App() {
           Physics 4AL Project: Reaction Time Experiment
         </Header>
 
-        <Container>
-          <a href="/basic">Basic Experiment</a>
-          <a href="/colors">Varying Colors Experiment</a>
-          <a href="/sizes">Varying Sizes Experiment</a>
+        <Container      
+          style={{
+                  position: 'absolute', left: '50%', top: '40%',
+                  transform: 'translate(-50%, -50%)'
+                  }}
+          >
+          <a href="/basic"><Button>Basic</Button></a>
+          <a href="/colors"><Button>Different Colors Experiment </Button> </a>
+          <a href="/sizes"><Button>Different Sizes Experiment </Button> </a>
         </Container>
     </div>
   );
