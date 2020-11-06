@@ -11,6 +11,7 @@
     "@types/react": "^16.9.53",
     "@types/react-csv": "^1.1.1",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router": "^5.1.8",
     "@types/semantic-ui": "^2.2.7",
     "fomantic-ui": "^2.8.7",
     "jquery": "^3.5.1",
@@ -46,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/history": "^4.7.8"
   }
 }

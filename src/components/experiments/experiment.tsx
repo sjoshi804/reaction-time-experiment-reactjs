@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, Container } from 'semantic-ui-react';
 import { CSVLink } from 'react-csv';
 
-class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string}>
+class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string }>
 {
-    private static approximateResponseLag = 160;
+    private static ApproximateResponseLag = 120;
+    private static ExperimentName = "Basic Reaction Time Experiment";
+
     constructor(props: any)
     {
         super(props);
@@ -37,20 +39,26 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
 
     recordReactionTime(startTime: Date)
     {
-        var reaction_time = (new Date()).getTime() - startTime.getTime() - Experiment.approximateResponseLag;
+        var reaction_time = (new Date()).getTime() - startTime.getTime() - Experiment.ApproximateResponseLag;
         this.state.results.push([this.state.stimulusType, reaction_time]);
         console.log("You reacted in " + reaction_time.toString());
         this.nextTrial();
     }
 
+    // Override this to be able to set varying types of stimulus
     showStimulus()
     {
         console.log("REACT NOW!");
         this.setState({stimulusPresent: true, stimulusType: "text"});
     }
 
-    waitForMs(ms: number) { //pass a time in milliseconds to this function
-        return new Promise(resolve => setTimeout(resolve, ms));
+    // Override this to put the appropriate stimulus: Return the appropriate stimulus - with opacity set based on isStimulusPresent
+    stimulus(isStimulusPresent: boolean, stimulusType: string)
+    {
+        var opacityOfStimulus = isStimulusPresent? 1: 0;
+        return (
+            <div style={{backgroundColor: "red", borderRadius: "50%", width: 100, height: 100, margin: "auto", opacity: opacityOfStimulus}}></div>
+        );
     }
 
     downloadResults()
@@ -59,10 +67,27 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
         this.setState({experimentCompleted: true})
     }
 
+    // Utility functions
+
+    waitForMs(ms: number) { //pass a time in milliseconds to this function
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     constructExperimentName(title: string)
     {
         var currentDate = new Date();
         return title + " " + currentDate.getMonth() + "-" + currentDate.getDate() + "-" + currentDate.getFullYear() + " " + currentDate.getHours() + "-" + currentDate.getMinutes() + "-" + currentDate.getSeconds()
+    }
+
+    getExperimentTitle()
+    {
+        return Experiment.ExperimentName;
+    }
+
+    getRandomInt(min: number, max: number) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     render() {
@@ -71,8 +96,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
         {
             startTime = new Date();
         }
-        var filename = this.constructExperimentName("Basic Reaction Experiment");
-        var opacityOfStimulus = this.state.stimulusPresent? 1: 0;
+        var filename = this.constructExperimentName(this.getExperimentTitle());
         var buttonPanel = 
             ( 
                 <div>
@@ -93,11 +117,16 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
             );
 
         return (
-            <Container>
+            <Container
+                style={{
+                position: 'absolute', left: '50%', top: '40%',
+                transform: 'translate(-50%, -50%)'
+                }}
+            >
             <div className="ui equal width center aligned padded grid">
                 <div className="row">
                     <div className="column">
-                        <i className="red large circle icon"  style={{opacity: opacityOfStimulus}}></i>
+                        {this.stimulus(this.state.stimulusPresent, this.state.stimulusType)}
                     </div>
                 </div>
                 <div className="row">
