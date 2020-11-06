@@ -4,6 +4,7 @@ import { CSVLink } from 'react-csv';
 
 class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string}>
 {
+    private static approximateResponseLag = 160;
     constructor(props: any)
     {
         super(props);
@@ -36,7 +37,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
 
     recordReactionTime(startTime: Date)
     {
-        var reaction_time = (new Date()).getTime() - startTime.getTime();
+        var reaction_time = (new Date()).getTime() - startTime.getTime() - Experiment.approximateResponseLag;
         this.state.results.push([this.state.stimulusType, reaction_time]);
         console.log("You reacted in " + reaction_time.toString());
         this.nextTrial();
@@ -72,18 +73,11 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
         }
         var filename = this.constructExperimentName("Basic Reaction Experiment");
         var opacityOfStimulus = this.state.stimulusPresent? 1: 0;
-        return (
-            <Container>
-            <div className="ui equal width center aligned padded grid">
-                <div className="row">
-                    <div className="column">
-                        <i className="red large circle icon"  style={{opacity: opacityOfStimulus}}></i>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="column">
+        var buttonPanel = 
+            ( 
+                <div>
                     <Button disabled={!this.state.stimulusPresent || this.state.experimentCompleted} onClick={() => this.recordReactionTime(startTime)}>
-                        React
+                    React
                     </Button>
                     <div className="ui button labeled">
                         <CSVLink data={this.state.results} filename={filename}>
@@ -95,6 +89,20 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
                             {this.state.results.length} trials taken
                         </div>
                     </div>
+                </div>
+            );
+
+        return (
+            <Container>
+            <div className="ui equal width center aligned padded grid">
+                <div className="row">
+                    <div className="column">
+                        <i className="red large circle icon"  style={{opacity: opacityOfStimulus}}></i>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="column">
+                        {buttonPanel}
                     </div>
                 </div> 
             </div>

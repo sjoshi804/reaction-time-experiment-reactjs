@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Container, Header, Button } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import { Experiment } from './experiment';
 function App() {
   return (
