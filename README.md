@@ -3,9 +3,13 @@
 This project is deployed at https://reaction-time-experiment.herokuapp.com/ using Heroku.
 
 Currently has 4 variations:
-- Basic i.e. react to red circle
-- Varying colors
-- Varying sizes
-- Varying positions
+- Basic (red circle)
+- Varying colors (red green blue yellow)
+- Varying sizes (small - 20px, large - 100px)
+- Varying positions (x varies from 10-90% of width, y varies from 10-300px)
 
-Also supports downloading results as csv.
+Results can be downloaded as a csv.
+
+## Adding new experiments
+
+New experiments can be added by extending the Experiment class found in src/experiments/experiment.tsx and overriding the showStimulus, stimulus and getExperimentTitle methods. 

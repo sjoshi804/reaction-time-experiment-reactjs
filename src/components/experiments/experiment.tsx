@@ -15,7 +15,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
             stimulusPresent: false,
             results: new Array<[string, number]>(),
             experimentCompleted: false,
-            stimulusType: "text"
+            stimulusType: "basic"
         };
         this.recordReactionTime = this.recordReactionTime.bind(this);
         this.downloadResults = this.downloadResults.bind(this);
