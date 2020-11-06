@@ -7,3 +7,5 @@ Currently has 4 variations:
 - Varying colors
 - Varying sizes
 - Varying positions
+
+Also supports downloading results as csv.
