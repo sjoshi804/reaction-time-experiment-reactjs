@@ -49,7 +49,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
     showStimulus()
     {
         console.log("REACT NOW!");
-        this.setState({stimulusPresent: true, stimulusType: "text"});
+        this.setState({stimulusPresent: true, stimulusType: "basic"});
     }
 
     // Override this to put the appropriate stimulus: Return the appropriate stimulus - with opacity set based on isStimulusPresent
