@@ -5,7 +5,7 @@ This project is deployed at https://reaction-time-experiment.herokuapp.com/ usin
 Currently has 4 variations:
 - Basic (red circle)
 - Varying colors (red green blue yellow)
-- Varying sizes (small - 20px, large - 100px)
+- Varying sizes  / Startle Reflex (small - 20px, large - 100px) - 90% of the time small appears and 10% of the time large appears
 - Varying positions (x varies from 10-90% of width, y varies from 10-300px)
 
 Results can be downloaded as a csv.
