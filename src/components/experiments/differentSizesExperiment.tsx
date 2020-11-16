@@ -46,7 +46,7 @@ class DifferentSizesExperiment extends Experiment
 
     getExperimentTitle()
     {
-        return "Different Sizes Experiment";
+        return "Different Sizes Experiment (Startle Reflex)";
     }
 }
 
