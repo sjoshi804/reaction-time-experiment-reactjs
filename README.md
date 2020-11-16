@@ -13,3 +13,9 @@ Results can be downloaded as a csv.
 ## Adding new experiments
 
 New experiments can be added by extending the Experiment class found in src/experiments/experiment.tsx and overriding the showStimulus, stimulus and getExperimentTitle methods. 
+
+## Sources of Error
+- Delay in processing / rendering of react ui elements
+- Frame rate leads to delay
+
+This makes our recorded reaction times slower than their actual values (perhaps approximately ~100-150ms - by comparing to average human reaction time)
