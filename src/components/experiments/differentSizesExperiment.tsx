@@ -38,9 +38,9 @@ class DifferentSizesExperiment extends Experiment
         switch(sizeNum)
         {
             case 0:
-                return "small";
-            default:
                 return "large";
+            default:
+                return "small";
         }
     }
 
