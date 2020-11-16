@@ -22,7 +22,7 @@ function App() {
           >
           <a href="/basic"><Button>Basic</Button></a>
           <a href="/colors"><Button>Different Colors Experiment </Button> </a>
-          <a href="/sizes"><Button>Different Sizes Experiment </Button> </a>
+          <a href="/sizes"><Button>Different Sizes Experiment (Startle Reflex)</Button> </a>
           <a href="/positions"><Button>Different Positions Experiment </Button> </a>
         </Container>
     </div>
