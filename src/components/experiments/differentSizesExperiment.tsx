@@ -8,7 +8,7 @@ class DifferentSizesExperiment extends Experiment
         this.setState(
             {
                 stimulusPresent: true,
-                stimulusType: this.getSizeFromInt(this.getRandomInt(0, 1))
+                stimulusType: this.getSizeFromInt(this.getRandomInt(0, 10))
             }
         )
     }
