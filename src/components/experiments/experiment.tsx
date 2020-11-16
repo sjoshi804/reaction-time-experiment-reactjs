@@ -4,7 +4,7 @@ import { CSVLink } from 'react-csv';
 
 class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string }>
 {
-    private static ApproximateResponseLag = 120;
+    private static ApproximateResponseLag = 0;
     private static ExperimentName = "Basic Reaction Time Experiment";
 
     constructor(props: any)
