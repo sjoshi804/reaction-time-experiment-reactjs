@@ -7,7 +7,7 @@ class SoundExperiment extends Experiment
 {
     offset()
     {
-        return 150;
+        return 175;
     }
 
     showStimulus()
