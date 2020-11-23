@@ -11,6 +11,7 @@ import { DifferentColorsExperiment } from './components/experiments/differentCol
 import { Route, Router, Switch } from 'react-router';
 import { Header } from 'semantic-ui-react';
 import { DifferentPositionsExperiment } from './components/experiments/differentPositionsExperiment';
+import { SoundExperiment } from './components/experiments/soundExperiment';
 
 const routing = (
   <Router history={createBrowserHistory()}>
@@ -22,6 +23,7 @@ const routing = (
                   <Route exact path="/colors" component={DifferentColorsExperiment} />
                   <Route path="/sizes" component={DifferentSizesExperiment} />
                   <Route path="/positions" component={DifferentPositionsExperiment} />
+                  <Route path="/sound" component={SoundExperiment} />
               </Switch>
           </div>
   </Router>
