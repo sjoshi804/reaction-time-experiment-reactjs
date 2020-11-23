@@ -18,8 +18,9 @@ New experiments can be added by extending the Experiment class found in src/expe
 
 - Delay in processing / rendering of react ui elements
 - Frame rate leads to delay
+- Variation in the button press across different computers
 
-This makes our recorded reaction times slower than their actual values (perhaps approximately ~100-150ms - by comparing to average human reaction time)
+This makes our recorded reaction times slower than their actual values (perhaps approximately ~100-150ms - by comparing to average human reaction time). This is accounted to some extent by the 75ms offset for visual reaction times and 150 for audio. This is done by measuring empirically the time to render the stimulus and render the button visible.
 
 ## Data Processing Tips
 
