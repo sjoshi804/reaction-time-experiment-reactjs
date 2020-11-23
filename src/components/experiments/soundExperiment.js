@@ -5,6 +5,10 @@ import beep from '../../assets/beep.mp3';
 
 class SoundExperiment extends Experiment
 {
+    offset()
+    {
+        return 150;
+    }
 
     showStimulus()
     {

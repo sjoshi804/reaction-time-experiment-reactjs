@@ -4,7 +4,7 @@ import { CSVLink } from 'react-csv';
 
 class Experiment extends React.Component<{}, { stimulusPresent: boolean, results: Array<[string, number]>, experimentCompleted: boolean, stimulusType: string }>
 {
-    private static ApproximateResponseLag = 0;
+    private static ApproximateResponseLag = 75;
     private static ExperimentName = "Basic Reaction Time Experiment";
 
     constructor(props: any)
@@ -39,7 +39,7 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
 
     recordReactionTime(startTime: Date)
     {
-        var reaction_time = (new Date()).getTime() - startTime.getTime() - Experiment.ApproximateResponseLag;
+        var reaction_time = (new Date()).getTime() - startTime.getTime() - this.offset();
         this.state.results.push([this.state.stimulusType, reaction_time]);
         console.log("You reacted in " + reaction_time.toString());
         this.nextTrial();
@@ -59,6 +59,12 @@ class Experiment extends React.Component<{}, { stimulusPresent: boolean, results
         return (
             <div style={{backgroundColor: "red", borderRadius: "50%", width: 100, height: 100, margin: "auto", opacity: opacityOfStimulus}}></div>
         );
+    }
+
+    // Override this to set offset for time to load page / render etc.
+    offset()
+    {
+        return Experiment.ApproximateResponseLag;
     }
 
     downloadResults()
